@@ -82,7 +82,7 @@ semipar.cd <- function(y,x=NULL,M=999,case=1){
   return(list(beta.cd=beta.cd,reject.count=fails))
 }
 
-# draws from the percentile residual bootstrap cd
+# draws from the basic residual bootstrap confidence distribution for the regression slope
 ## inputs:
 # y: the response vector
 # x: the covariate vector
@@ -100,7 +100,7 @@ resid.bootstrap <- function(y,x,M){
   return(2*coef(tmp)[2]-beta.cd)
 }
 
-# draws from the percentile wild bootstrap cd
+# draws from the percentile wild bootstrap confidence distribution for the regression slope
 ## inputs:
 # y: the response vector
 # x: the covariate vector
@@ -487,17 +487,14 @@ xtable(df2,digits=3,caption="Results of Simulation Study 2")
 
 df3 <- rbind( 
   c( mean(s3$c80),median(s3$w80),mean(s3$c90),median(s3$w90),mean(s3$c95),median(s3$w95), sum(s3$rej)/(sum(s3$rej)+S.global*M.global) ),
-  c( mean(s3$c80.cr),median(s3$w80.cr),mean(s3$c90.cr),median(s3$w90.cr),mean(s3$c95.cr),median(s3$w95.cr), sum(s3$rej.cr)/(sum(s3$rej.cr)+S.global*M.global) ),
   c( mean(s3$c80.b),median(s3$w80.b),mean(s3$c90.b),median(s3$w90.b),mean(s3$c95.b),median(s3$w95.b), NA ),
   c( mean(s3$c80.n),median(s3$w80.n),mean(s3$c90.n),median(s3$w90.n),mean(s3$c95.n),median(s3$w95.n), NA ),
   
   c( mean(s3.1$c80),median(s3.1$w80),mean(s3.1$c90),median(s3.1$w90),mean(s3.1$c95),median(s3.1$w95), sum(s3.1$rej)/(sum(s3.1$rej)+S.global*M.global) ),
-  c( mean(s3.1$c80.cr),median(s3.1$w80.cr),mean(s3.1$c90.cr),median(s3.1$w90.cr),mean(s3.1$c95.cr),median(s3.1$w95.cr), sum(s3.1$rej.cr)/(sum(s3.1$rej.cr)+S.global*M.global)  ),
   c( mean(s3.1$c80.b),median(s3.1$w80.b),mean(s3.1$c90.b),median(s3.1$w90.b),mean(s3.1$c95.b),median(s3.1$w95.b),NA ),
   c( mean(s3.1$c80.n),median(s3.1$w80.n),mean(s3.1$c90.n),median(s3.1$w90.n),mean(s3.1$c95.n),median(s3.1$w95.n),NA ),
   
   c( mean(s3.2$c80),median(s3.2$w80),mean(s3.2$c90),median(s3.2$w90),mean(s3.2$c95),median(s3.2$w95), sum(s3.2$rej)/(sum(s3.2$rej)+S.global*M.global) ),
-  c( mean(s3.2$c80.cr),median(s3.2$w80.cr),mean(s3.2$c90.cr),median(s3.2$w90.cr),mean(s3.2$c95.cr),median(s3.2$w95.cr), sum(s3.2$rej.cr)/(sum(s3.2$rej.cr)+S.global*M.global)  ), 
   c( mean(s3.2$c80.b),median(s3.2$w80.b),mean(s3.2$c90.b),median(s3.2$w90.b),mean(s3.2$c95.b),median(s3.2$w95.b), NA ), 
   c( mean(s3.2$c80.n),median(s3.2$w80.n),mean(s3.2$c90.n),median(s3.2$w90.n),mean(s3.2$c95.n),median(s3.2$w95.n), NA )
 
